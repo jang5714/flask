@@ -4,28 +4,30 @@
 이때, 여러 사람이면 전부 입력 받아서 전체가 일관 출력되는 시스템이어야 합니다
 '''
 
-class Person(object):
+class Person():
 
-    def __init__(self, name, age, adress):
+    def __init__(self, name, Phonebook, address):
         self.name = name
-        self.age = age
-        self.adress = adress
-        self.scores = []
+        self.Phonebook = Phonebook
+        self.address = address
 
-    def information(self, score):
-        self.scores.append(score)
+    def to_strion(self):
+        print(f'안녕하세요 제 이름은 {self.name}이고, 나이는 {self.age}세이고, {self.address}에서 거주합니다')
 
-    def myself(self):
-       print(f'제 이름은 {self.name}이고, 나이는 {self.age}세이고 , {self.adress}에서 거주합니다')
 
-    @staticmethod
-    def main():
-        count = int(input('How many ?'))
-        result = []
-        for i in range(count):
-            person = Person(input('name: '), input('age: '), input('adress: '))
-            result.append(person)
-        for person in result:
-           person.myself()
+def main():
+    persons =[]
+    while 1:
+        print('0-Exit 1-Add 2-Print')
+        menu = input("Add")
+        if menu == '0':
+            return
+        elif menu == '1':
+            persons.append(Person(input('name : '),input('age : '),input('address : ')))
+        elif menu == '2':
+            for i in persons:
+                i.to_strion()
 
-Person.main()
+
+if __name__ == '__main__':
+    main()
