@@ -1,9 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+from oop import contacts
 
 class Music(object):
-    domain=''
+    domain =''
     html = ''
     query_string =''
     headers = {'User-Agent':'Mozilla/5.0'}
@@ -50,32 +51,36 @@ class Music(object):
 
 
 
-
 def main():
     mr = Music()
     while 1:
-        menu = int(input('0- exit, 1-bug (URL), 2-Melon (URL)  3-output\n 4-print dict, 5-dict to dataframe, 6-df to csv'))
+        menu =contacts.menu(['exit','bug (URL),Melon (URL)','output','print dict','dict to dataframe','df to csv'])
         if menu == 0:
             break
         elif menu == 1:
-            mr.domain = 'https://music.bugs.co.kr/chart/track/realtime/total?'
-            mr.query_string ='chartdate=20210720&charthour=16'
-            mr.set_html()
+            site = int(input('1-벅스 2-멜론'))
+            if site == 1:
+                mr.domain = 'https://music.bugs.co.kr/chart/track/realtime/total?'
+                mr.query_string = 'chartdate=20210720&charthour=16'
+                mr.class_name.append('artist')
+                mr.class_name.append('title')
+                mr.tag_name = 'p'
+                mr.set_html()
+            else:
+                mr.domain = 'https://www.melon.com/chart/index.htm?'
+                mr.query_string = 'dayTime=2021072107'
+                mr.class_name.append('ellipsis rank02')
+                mr.class_name.append('ellipsis rank01')
+                mr.tag_name = 'div'
+                mr.set_html()
         elif menu == 2:
-            mr.domain = 'https://www.melon.com/chart/index.htm?'
-            mr.query_string = 'dayTime=2021072107'
-            mr.set_html()
+                mr.get_raking()
         elif menu == 3:
-            mr.class_name.append('ellipsis rank02')
-            mr.class_name.append('ellipsis rank01')
-            mr.tag_name = 'div'
-            mr.get_raking()
-        elif menu == 4:
             mr.insert_dict()
-        elif menu == 5:
+        elif menu == 4:
             mr.dict_to_dataframe()
-        elif menu == 6:
-            mr.fname = '멜론'
+        elif menu == 5:
+            mr.fname = 'text'
             mr.df_to_csv()
 
 

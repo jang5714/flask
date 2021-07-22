@@ -14,7 +14,7 @@ class PhoneBook():
         print(f'\n[InFor]\nname: {self.name} \nphone: {self.phone}\nemail: {self.email}\naddress: {self.address}')
 
 
-def set_contact():
+def set_contact() -> object:
     return PhoneBook(input('name'),input('phone'),input('email'),input('address'))
 
 
@@ -30,7 +30,7 @@ def del_contact(ls, name):
 
 
 
-def menu(ls):
+def menu(ls) -> int:
     #return '\t'.join(ls)
     t = ''
     for i, j in enumerate(ls):
