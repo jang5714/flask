@@ -11,15 +11,12 @@ class View (object):
         print(modeling.context.head(2))
         print(modeling.fname.head(2))
 
-
-
     def proprcessing(self, bugs, melon):
         this = self.dataset
         service = self.service
         this.context = service.new_model(bugs)
         this.fname = service.new_model(melon)
         return this
-
 
 
 if __name__ == '__main__':

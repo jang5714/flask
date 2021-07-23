@@ -1,6 +1,9 @@
 '''
 name, phone, email, address
 '''
+from common.menu import menu
+
+
 class PhoneBook():
 
     def __init__(self, name, phone, email, address):
@@ -30,12 +33,7 @@ def del_contact(ls, name):
 
 
 
-def menu(ls) -> int:
-    #return '\t'.join(ls)
-    t = ''
-    for i, j in enumerate(ls):
-        t += str(i)+'-'+j+'\t'
-    return int(input(t))
+
 
 def main():
     ls =[]
