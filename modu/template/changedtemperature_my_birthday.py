@@ -61,6 +61,7 @@ class ChangedTemperature_My_Birthday():
         plt.title('내 생일의 기온 변화 그래프')
         plt.plot(high, 'hotpink', label='high')
         plt.plot(low, 'skyblue', label='low')
+        plt.legend()
         plt.show()
 
 
