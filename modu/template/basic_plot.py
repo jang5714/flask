@@ -18,7 +18,7 @@ def plot_two_list_show():
     plt.legend()
     plt.show()
 
-def plot_marker():
+def scatter():
     plt.title('marker')
     plt.plot([10, 20, 30, 40], 'r.', label ='circle')
     plt.plot([10, 30, 20, 10], 'g^', label='triangle up')
@@ -26,18 +26,4 @@ def plot_marker():
     plt.show()
 
 
-if __name__ == '__main__':
-    while 1:
-        menu = menu(
-            ['exit', 'plot_show', 'plot_two_list_show', 'plot_marker', 'dict to dataframe', 'df to csv'])
-        if menu == 0:
-            break
-        elif menu == 1:
-            plot_show()
-            break
-        elif menu == 2:
-            plot_two_list_show()
-            break
-        elif menu == 3:
-            plot_marker()
-            break
+
