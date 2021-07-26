@@ -1,2 +1,2 @@
-def temperature_changed_my_birtday():
+def temperature_changed_my_birthday():
     pass
