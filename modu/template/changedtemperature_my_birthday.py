@@ -9,7 +9,13 @@ consumer 구조로 사용되면 data에서 header를 제거한다.
 
 row[날짜,지점,평균기온(℃),최저기온(℃),최고기온(℃)] 최고기온은 -1 이다.
 
-
+data : [] = list()는 list 타입의 data를 list()로 초기화 시키는 것이다.
+단, 한 메소드 내에서만 사용하면 로컬에서 초기화한다. 예제는 다음과 같다.
+data : [] = None
+def save_data_to_list(self):
+    data = list()
+그러나, 여러 메소드에서 사용하면 필드에서 초기화한다. 예제는 다음과 같다.
+data : [] = list()
 '''
 class ChangedTemperature_My_Birthday():
     data: [] = list()
@@ -32,18 +38,41 @@ class ChangedTemperature_My_Birthday():
         return [i[-1] for i in self.data]
 
     def save_data_to_list(self):
-        self.highest_temperature.append([float(i[-1]) for i in self.data if i[-1] != ''])
-        print(self.highest_temperature)
+        [self.highest_temperature.append(float(i[-1])) for i in self.data if i[-1] != '']
+        print(f'{len(self.highest_temperature)} 개')
 
-    def visualize_data(self):
+    def visualize_highest_temperatures(self):
+        plt.plot(self.highest_temperature, 'r') #red
+        plt.figure(figsize=(20, 2))
+        plt.show()
+
+
+    def highest_temperatures_my_birthday(self):
+        high = [] #최고기온
+        low = [] #최저기온
+        for i in self.data:
+            if i[-1] != '' and i[-2] != "":
+                if 1983 <= int(i[0].split('-')[0]):
+                    if i[0].split('-')[1] == "02" and i[0].split('-')[2] == '14':
+                        high.append(float(i[-1]))
+                        low.append(float(i[-2]))
+        plt.plot(high, 'hotpink')
+        plt.plot(low, 'skyblue')
+        plt.show()
+
+
+    def find_month_using_split(self):
         pass
 
     def extract_date_data(self):
         pass
 
 
+
+
 if __name__ == '__main__':
     this = ChangedTemperature_My_Birthday()
     this.read_data()
     #this.save_data_to_list()
-    this.save_data_to_list()
+    #this.save_data_to_list()
+    this.highest_temperatures_my_birthday()
