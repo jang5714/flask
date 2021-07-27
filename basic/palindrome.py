@@ -13,6 +13,8 @@ def isPalindrame(ls: []) -> bool:
         if ls.pop(0) != ls.pop():
             return False
     return True
+
+
 if __name__ == '__main__':
     ls = str_to_list("A man, a plan, a canal: panama")
     print(ls)

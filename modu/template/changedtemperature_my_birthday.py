@@ -17,6 +17,7 @@ def save_data_to_list(self):
 그러나, 여러 메소드에서 사용하면 필드에서 초기화한다. 예제는 다음과 같다.
 data : [] = list()
 '''
+
 class ChangedTemperature_My_Birthday():
     data: [] = list()
     highest_temperature: [] = list()
