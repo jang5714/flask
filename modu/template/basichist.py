@@ -17,18 +17,19 @@ def show_hist(ls):
     plt.hist(ls, bins=6)
     plt.show()
 
-def show_hist_about_highest_temperature(month, month01):
+def highest_temperature(month: str)-> []:
     birth = ChangedTemperature_My_Birthday()
-
     birth.read_data()
     aug = []
     [aug.append(float(i[-1])) for i in birth.data if i[-1] != '' if i[0].split('-')[1] == month]
+    return aug
+    # birth.read_data()
+    # jan = []
+    # [jan.append(float(i[-1])) for i in birth.data if i[-1] != '' if i[0].split('-')[1] == month01]
 
-    birth.read_data()
-    jan = []
-    [jan.append(float(i[-1])) for i in birth.data if i[-1] != '' if i[0].split('-')[1] == month01]
+
+def show_hist_about(aug: [], month: str):
     plt.hist(aug, bins=100, color='r', label=f'{month}')
-    plt.hist(jan, bins=100, color='b', label=f'{month01}')
     plt.legend()
     plt.show()
 
@@ -37,4 +38,4 @@ def show_hist_about_highest_temperature(month, month01):
 if __name__ == '__main__':
     #ls = show_dice(1000000)
     #show_hist(ls)
-    show_hist_about_highest_temperature('05', '08')
+    show_hist_about(highest_temperature('05'), month='02')
