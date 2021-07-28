@@ -66,6 +66,18 @@ def np_mask():
     mask2 = abs(a) % 2 == 0
     print(f'{a[mask1 + mask2]}') # Java 에서 || 연산
     print(f'{a[mask1 * mask2]}')  # Java 에서 && 연산
-    
+
+def np_bubble():
+    x = np.random.randint(-100, 100, 1000)
+    y = np.random.randint(-100, 100, 1000)
+    size = np.random.randint(100) * 100
+    mask1 = abs(x) > 50
+    mask2 = abs(y) > 50
+    x = x[mask1+mask2]
+    y = y[mask1+mask2]
+    plt.scatter(x, y, s=size, c=x, cmap='jet', alpha=0.7)
+    plt.colorbar()
+    plt.show()
+
 if __name__ == '__main__':
-    np_mask()
+    np_bubble()
